@@ -4,10 +4,11 @@ import express from "express";
 import cors from "cors";
 import morgan from 'morgan';
 import cookie from "cookie-parser";
-// import {userRouter} from "./routes/users/user.js";
+import {StudentRouter} from "./routes/students/students.js";
 import {authRouter} from "./routes/auth/auth.js"
 import {DashboardRouter} from "./routes/dashboard/dashboard.js";
 import { courseRouter } from './routes/courses/courses.js';
+
 const app = express();
 
 //For getting data from the frontend as json format 
@@ -23,7 +24,7 @@ app.use(morgan('combined'));
 //all users routers
 app.use("/api/v1",authRouter)
 app.use("/api/v1",courseRouter)
-// app.use("/api/v1", userRouter);
+app.use("/api/v1", StudentRouter);
 
 app.use("/api/v1", DashboardRouter);
 
